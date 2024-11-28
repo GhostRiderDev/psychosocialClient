@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Hide the default scrollbar */
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    /* background-color: #f5f5f5; */
+    background-color: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-color:#48dccc;
+    border-radius: 1rem;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #48dccc;
+  }
+}
+
+li.ant-menu-item.ant-menu-item-only-child {
+  padding-left: 32px !important;
+}
+
+.ant-menu-light .ant-menu-item-selected,
+.ant-menu-light > .ant-menu .ant-menu-item-selected {
+  background-color: #48dccc;
+}
+
+.ant-menu-light .ant-menu-item-selected,
+.ant-menu-light > .ant-menu .ant-menu-item-selected {
+  color: white;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #48dccc;
+  border-color: #48dccc;
+}
+
+.ant-checkbox .ant-checkbox-inner {
+  border: 1px solid #48dccc;
+}
+
+.ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover
+  .ant-checkbox-checked:not(.ant-checkbox-disabled)
+  .ant-checkbox-inner {
+  background-color: #48dccc;
+  border-color: transparent;
+}
+
+.ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover
+  .ant-checkbox-inner,
+:where(.css-dev-only-do-not-override-17sses9).ant-checkbox:not(
+    .ant-checkbox-disabled
+  ):hover
+  .ant-checkbox-inner {
+  border-color: #48dccc;
+}
+
+.ant-menu-light .ant-menu-submenu-selected > .ant-menu-submenu-title,
+:where(.css-dev-only-do-not-override-17sses9).ant-menu-light
+  > .ant-menu
+  .ant-menu-submenu-selected
+  > .ant-menu-submenu-title {
+  color: #48dccc;
+}
+
+.ant-radio-wrapper .ant-radio-checked .ant-radio-inner {
+  border-color: #48dccc;
+  background-color: #48dccc;
+}
+
+/* phone Input */
+.PhoneInputInput {
+  outline: none;
+  /* background-color: #EBF6FE; */
+  background-color: #E7F2E6;
+  padding: 1rem;
+  color: black;
+  border-radius: 5px;
+  border: 2px solid #48dccc;
+  }
+  
+  .PhoneInputCountry {
+  margin-right: 15px !important;
+  display: flex !important;
+  gap: 10px;
+  background-color: #E7F2E6;
+  padding: 1rem;
+  border-radius: 5px;
+  border: 2px solid #48dccc;
+  }
+
+  .ant-upload{
+    background-color: white !important;
+    width: 242px !important;
+    border-radius: 40%;
+    }
