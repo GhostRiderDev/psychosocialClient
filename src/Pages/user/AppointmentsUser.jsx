@@ -1,8 +1,9 @@
 import Status from "../../../Components/Appointments/Status";
-import AllAppointmentsUser from "../../user/AllAppointmentsUser";
+import AllAppointmentsUser from "./AllAppointmentsUser";
 
-function AppointmentsUser() {
+function Appointments() {
 
+  
   return (
     <div className="p-[32px]  w-full">
       <Status />
@@ -11,6 +12,6 @@ function AppointmentsUser() {
   );
 }
 
-export default AppointmentsUser;
+export default Appointments;
 
 

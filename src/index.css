@@ -103,3 +103,25 @@ li.ant-menu-item.ant-menu-item-only-child {
     width: 242px !important;
     border-radius: 40%;
     }
+
+    .react-datepicker {
+  font-family: inherit;
+  border: none;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+.react-datepicker__header {
+  background-color: #3b82f6;
+  border-bottom: none;
+}
+.react-datepicker__current-month {
+  color: white;
+}
+.react-datepicker__day-name {
+  color: white;
+}
+.react-datepicker__day--selected {
+  background-color: #3b82f6 !important;
+}
+.react-datepicker__day:hover {
+  background-color: #93c5fd;
+}

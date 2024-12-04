@@ -15,21 +15,20 @@ function Signin() {
         email,
         password,
       };
-      console.log(result);
       const response = await baseURL.post("/user/sign-in", result, {
         headers: {
           "Content-Type": "application/json",
           authentication: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      console.log(response?.data);
-      console.log(response?.data?.data?.token);
+
       if (response?.data?.statusCode === 200) {
         localStorage.setItem("token", response?.data?.data?.token);
         localStorage.setItem(
           "yourInfo",
           JSON.stringify(response?.data?.data?.attributes)
         );
+
         Swal.fire({
           position: "top-center",
           icon: "success",
@@ -37,7 +36,21 @@ function Signin() {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/");
+
+        if (response?.data?.data?.attributes?.role === "Patient") {
+          navigate("/panel/user");
+          return;
+        }
+
+        if (response?.data?.data?.attributes?.role === "Admin") {
+          navigate("/allTherapist");
+          return;
+        }
+
+        if (response?.data?.data?.attributes?.role === "Therapist") {
+          navigate("/therapistRequest");
+          return;
+        }
       }
     } catch (error) {
       console.log(error?.response?.data);
@@ -49,7 +62,7 @@ function Signin() {
       });
     }
   };
-  
+
   return (
     <div
       className="flex mx-auto overflow-hidden container rounded-xl shadow-xl bg-[url('https://i.ibb.co/t2TdKRm/signin.png')] "
@@ -75,6 +88,7 @@ function Signin() {
             placeholder="Ingresa tu correo"
             className="p-4 bg-white rounded border border-primary justify-start items-center gap-4 inline-flex focus:border-primary "
             type="email"
+            autoComplete="on"
           />
           <Input.Password
             onChange={(e) => setPassword(e.target.value)}

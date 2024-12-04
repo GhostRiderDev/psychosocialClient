@@ -9,7 +9,7 @@ function Signup() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("545454545");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -49,7 +49,7 @@ function Signup() {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/otp/:email");
+        navigate("/otp/" + email);
       }
     } catch (error) {
       console.log(error?.response?.data);
@@ -111,22 +111,6 @@ function Signup() {
             value={phoneNumber?.toString()}
             onChange={(value) => setPhoneNumber(value)}
           />
-          <Input.Password
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Ingresa tu contraseña"
-            className="p-4 bg-white rounded border border-primary justify-start items-center gap-4 inline-flex focus:border-primary "
-          />
-          <Input.Password
-            onChange={(e) => {
-              setPasswordConfirmation(e.target.value);
-              setHasConfirmationBeenTouched(true);
-            }}
-            placeholder="Confirma tu contraseña"
-            className="p-4 bg-white rounded border border-primary justify-start items-center gap-4 inline-flex focus:border-primary "
-          />
-          {passwordError && hasConfirmationBeenTouched && (
-            <span className="text-red-500 text-sm">{passwordError}</span>
-          )}
         </div>
         <div className="flex flex-col gap-[20px] mt-[18px]">
           <div>

@@ -1,19 +1,35 @@
-import React, { useState, useRef } from "react";
-import { Table, Pagination, ConfigProvider, Modal, Rate } from "antd";
+import { useState, useRef, useEffect } from "react";
+import { Table, Modal, Rate } from "antd";
 import { useReactToPrint } from "react-to-print";
-import { useGetAllAppointmentQuery } from "../../redux/Features/getAllAppointmemtApi";
+import {
+  getMyAppointments,
+  useGetAllAppointmentQuery,
+} from "../../redux/Features/getAllAppointmemtApi";
 import Loading from "../Loading/Loading";
 
 function AppointmentsTable() {
-  const {
-    data: allAppointment,
-    isSuccess,
-    isError,
-    isLoading,
-  } = useGetAllAppointmentQuery();
+  const { data: allAppointment, isLoading } = useGetAllAppointmentQuery();
+
+  const [appointments, setAppointments] = useState([]);
+
   const componentRef = useRef();
   const [details, setDetails] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.href = "/login";
+    }
+
+    if (localStorage.getItem("yourInfo")) {
+      const data = JSON.parse(localStorage.getItem("yourInfo"));
+      getMyAppointments(data?._id, token).then((res) => {
+        setAppointments(res?.data?.attributes);
+        console.log(res?.data?.attributes);
+      });
+    }
+  }, []);
 
   const handleOpenModal = (data) => {
     setIsModalOpen(true);
@@ -117,7 +133,7 @@ function AppointmentsTable() {
             position: ["bottomCenter"],
           }}
           columns={columns}
-          dataSource={allAppointment?.data?.attributes}
+          dataSource={appointments}
         />
       </div>
 

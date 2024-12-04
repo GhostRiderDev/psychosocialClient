@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { Input, Checkbox } from "antd";
+import {  useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import OtpInput from "react-otp-input";
@@ -16,6 +15,8 @@ function Otp() {
   };
   const handleVerifyOtp = async () => {
     try {
+      console.log("Otp: ", otp);
+      console.log("Email: ", email);
       const result = {
         email,
         code: otp
@@ -42,7 +43,7 @@ function Otp() {
       <div className=" w-[500px] h-[550px] p-[32px] bg-white shadow rounded-3xl my-auto mx-auto">
         <div>
           <svg
-            onClick={() => navigate("/login")}
+            onClick={() => navigate("/auth/login")}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

@@ -1,4 +1,3 @@
-import { Input } from "antd";
 import AllTherapistTable from "../../../Components/Therapist/AllTherapistTable";
 
 function AllTherapist() {

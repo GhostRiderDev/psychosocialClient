@@ -35,15 +35,33 @@ import AssignPatientList from "./Pages/AssignPatientList/AssignPatientList";
 import EditSubscription from "./Pages/Dashboard/Subscription/EditSubscription";
 import Landing from "./Pages/Landing/Landing";
 import Signup from "./Pages/Signup/Signup";
+import UserHome from "./Pages/user/home/UserHome";
+import PrivateRouteUser from "./PrivateRouteUser";
+import Appointment from "./Pages/appointment/Appointment";
+import Header from "./Pages/Landing/Header";
 
 function App() {
-  // useEffect(() => {
-  //   window.location.reload();
-  // },[])
   return (
     <>
       <Router>
         <Routes>
+          <Route
+            path="/panel/user/*"
+            element={
+              <PrivateRouteUser>
+                <UserHome />
+              </PrivateRouteUser>
+            }
+          />
+          <Route
+            path="/appointment"
+            element={
+              <>
+                <Header />
+                <Appointment />
+              </>
+            }
+          />
           <Route path="/" element={<Landing />} />
           <Route
             path="/"
@@ -97,7 +115,6 @@ function App() {
             <Route path="add-subscriptions" element={<AddSubscription />} />
             <Route path="/notification" element={<Notification />} />
             <Route path="/settings" element={<Settings />} />
-            {/* <Route path="/settings/:dynamic" element={<SettingPage />} /> */}
           </Route>
           <Route path="/auth/login" element={<Signin />} />
           <Route path="/auth/signup" element={<Signup />} />
