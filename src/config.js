@@ -2,7 +2,7 @@ import axios from "axios";
 
 // "http://192.168.10.35:8000/api"
  const baseURL = axios.create({
-  baseURL: "http://localhost:3000/api/v1",
+  baseURL: `${import.meta.env.VITE_BASE_URL}/api/v1`,
   timeout: 10000,
   headers: { "X-Custom-Header": "foobar", authorization: `Bearer ${localStorage.getItem("token")}` },
 
